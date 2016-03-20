@@ -1,0 +1,23 @@
+{
+  "name": "bower-videogular-vimeo",
+  "version": "0.0.1",
+  "authors": [
+    "Momchil Marinov <momchil@mail.com>"
+  ],
+  "description": "Videogular Vimeo plugin",
+  "main": "vimeo.js",
+  "keywords": [
+    "videogular",
+    "videogular-plugin",
+    "videogular-vimeo"
+  ],
+  "dependencies": {
+    "videogular": "^1.4.2",
+    "videogular-controls": "^1.4.2",
+    "vimeo-jquery-api": "^0.10.1",
+    "jquery": "^2.2.2",
+    "videogular-themes-default": "^1.4.2"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/bagabont"
+}
