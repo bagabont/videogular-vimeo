@@ -87,8 +87,9 @@ angular.module('videogular.plugins.vimeo', [])
                     function onSourceChange(url) {
                         if (!url) {
                             if (player) {
-                                return player.destroy();
+                                player.destroy();
                             }
+                            return
                         }
                         var id = getVideoId(url);
                         if (!id) {
