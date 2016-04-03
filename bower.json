@@ -10,7 +10,7 @@
     "videogular",
     "videogular-plugin",
     "videogular-vimeo",
-	"vimeo"
+    "vimeo"
   ],
   "dependencies": {
     "videogular": "latest",
