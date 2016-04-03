@@ -104,8 +104,8 @@ angular.module('videogular.plugins.vimeo', [])
 
             angular.element(player.css({
               'width': '100%',
-              'height': 'calc(100% + 200px)',
-              'margin-top': '-100px'
+              'height': 'calc(100% + 400px)',
+              'margin-top': '-200px'
             }));
 
             $(API.mediaElement[0]).replaceWith(player);
