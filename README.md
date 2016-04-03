@@ -6,8 +6,9 @@ Vimeo plugin for videogular player
 bower install videogular-vimeo
 ```
 
-
 ## Example usage:
+
+In order to add support for Vimeo videos to Videogular, simply add the `vg-vimeo` attribute to the `vg-media` element.
 
 ```html
 <videogular vg-theme="controller.config.theme">
