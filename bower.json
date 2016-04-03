@@ -12,6 +12,7 @@
     "webpack.config.js",
     "package.json",
     "bower.json",
+    "example",
     "README.md"
   ],
   "keywords": [

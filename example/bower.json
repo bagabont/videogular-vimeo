@@ -17,7 +17,7 @@
     "vimeo-jquery-api": "^0.10.1",
     "jquery": "^2.2.2",
     "videogular-themes-default": "^1.4.2",
-    "videogular-vimeo": "^0.1.0"
+    "videogular-vimeo": "latest"
   },
   "license": "MIT",
   "homepage": "https://github.com/bagabont"
