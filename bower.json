@@ -5,7 +5,15 @@
     "Momchil Marinov <momchil@mail.com>"
   ],
   "description": "Vimeo Plugin for Videogular",
-  "main": "vg-vimeo.js",
+  "main": "./dist/vg-vimeo.min.js",
+  "ignore": [
+    ".gitignore",
+    "src",
+    "webpack.config.js",
+    "package.json",
+    "bower.json",
+    "README.md"
+  ],
   "keywords": [
     "videogular",
     "videogular-plugin",
