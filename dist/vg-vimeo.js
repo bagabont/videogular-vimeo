@@ -55,12 +55,17 @@
 	          var player, videoWidth, videoHeight, currentTime, duration, paused, volume;
 
 	          function getVideoId(url) {
-	            var regExp = /^.+vimeo.com\/(.*\/)?([^#\?]*)/;
-	            var m = url.match(regExp);
+	            var vimeoUrlRegExp = /^.+vimeo.com\/(.*\/)?([^#\?]*)/;
+	            var m = url.match(vimeoUrlRegExp);
 	            return m ? m[2] || m[1] : null;
 	          }
 
-	          function initVimeo() {
+	          function updateMetadata() {
+	            var event = new CustomEvent('loadedmetadata');
+	            API.mediaElement[0].dispatchEvent(event);
+	          }
+
+	          function configurePlayer() {
 	            Object.defineProperties(API.mediaElement[0], {
 	                'currentTime': {
 	                  get: function () {
@@ -69,7 +74,6 @@
 	                  set: function (value) {
 	                    currentTime = value;
 	                    player.vimeo('seekTo', value);
-	                    updateMetadata();
 	                  }
 	                },
 	                'duration': {
@@ -110,11 +114,6 @@
 	              player.vimeo('pause');
 	            };
 
-	            function updateMetadata() {
-	              var event = new CustomEvent('loadedmetadata');
-	              API.mediaElement[0].dispatchEvent(event);
-	            }
-
 	            player
 	              .vimeo('getVolume', function (value) {
 	                volume = value;
@@ -130,35 +129,22 @@
 	              })
 	          }
 
-	          function onSourceChange(url) {
-	            if (!url) {
-	              if (player) {
-	                player.destroy();
-	              }
-	              return
-	            }
-	            var id = getVideoId(url);
-	            if (!id) {
-	              return;
-	            }
-
-	            player = $('<iframe>', {
+	          function createVimeoIframe(id) {
+	            return $('<iframe>', {
 	              src: '//player.vimeo.com/video/' + id + '?api=1&player_id=vimeoplayer',
 	              frameborder: 0,
 	              scrolling: 'no'
-	            });
-
-	            angular.element(player.css({
+	            }).css({
 	              'width': '100%',
 	              'height': 'calc(100% + 400px)',
 	              'margin-top': '-200px'
-	            }));
+	            });
+	          }
 
-	            $(API.mediaElement[0]).replaceWith(player);
-
+	          function wirePlayer() {
 	            player
 	              .on('ready', function () {
-	                initVimeo();
+	                configurePlayer();
 	              })
 	              .on('play', function () {
 	                paused = false;
@@ -182,6 +168,23 @@
 	                  target: API.mediaElement[0]
 	                });
 	              });
+	          }
+
+	          function onSourceChange(url) {
+	            if (!url) {
+	              if (player) {
+	                player.destroy();
+	              }
+	              return
+	            }
+	            var id = getVideoId(url);
+	            if (!id) {
+	              return;
+	            }
+	            player = createVimeoIframe(id);
+	            // Swap video element with Vimeo iFrame
+	            $(API.mediaElement[0]).replaceWith(player);
+	            wirePlayer(player);
 	          }
 
 	          scope.$watch(function () {
