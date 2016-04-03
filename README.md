@@ -1,6 +1,12 @@
 # videogular-vimeo
 Vimeo plugin for videogular player
 
+## Installation
+```sh
+bower install videogular-vimeo
+```
+
+
 ## Example usage:
 
 ```html
