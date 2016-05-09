@@ -1,7 +1,7 @@
 {
   "name": "videogular-vimeo",
   "version": "0.1.0",
-  "description": "Vimeo plugin for videogular player",
+  "description": "Vimeo plugin for the Videogular player",
   "main": "./dist/vg-vimeo.min.js",
   "dependencies": {},
   "devDependencies": {
