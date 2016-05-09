@@ -1,9 +1,14 @@
 # videogular-vimeo
 Vimeo plugin for videogular player
 
-## Installation
+## Bower Installation
 ```sh
 bower install videogular-vimeo
+```
+
+## NPM Installation
+```sh
+npm install videogular-vimeo
 ```
 
 ## Example usage:
